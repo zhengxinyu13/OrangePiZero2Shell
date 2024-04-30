@@ -450,7 +450,7 @@ show_menu() {
     环境:OrangePi ZERO 2 (Ubuntu22.04)
     脚本作用:快速部署一个省电无感的小透明轻服务器
             --- Made by Grayson with YOU ---'
-    echo -e "https://github.com/zhengxinyu13/OrangePiZero2Shell"
+    echo -e "    https://github.com/zhengxinyu13/OrangePiZero2Shell"
     greenline "————————————————————————————————————————————————————"
     echo "请选择操作："
 

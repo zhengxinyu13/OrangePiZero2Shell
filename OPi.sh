@@ -436,7 +436,7 @@ install_casaos(){
 
 # 更新自己
 update_scripts(){
-    wget -O Pi.sh ${proxy}https://mirror.ghproxy.com/https://raw.githubusercontent.com/zhengxinyu13/OrangePiZero2Shell/main/OPi.sh && chmod +x Pi.sh
+    wget -O Pi.sh ${proxy}https://raw.githubusercontent.com/zhengxinyu13/OrangePiZero2Shell/main/OPi.sh && chmod +x Pi.sh
 	echo "脚本已更新并保存在当前目录 Pi.sh,现在将执行新脚本。"
 	./Pi.sh ${proxy}
 	exit 0

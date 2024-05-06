@@ -36,8 +36,6 @@ menu_options=(
     "修改阿里云盘OpenToken(335位)"
     "修改小雅转存文件夹ID(40位)"
     "安装内网穿透工具Cpolar"
-    "安装盒子助手docker版"
-    "安装CasaOS面板"
     "更新脚本"
 )
 
@@ -52,8 +50,6 @@ commands=(
     ["修改阿里云盘OpenToken(335位)"]="update_aliyunpan_opentoken"
     ["修改小雅转存文件夹ID(40位)"]="update_aliyunpan_folder_id"
     ["安装内网穿透工具Cpolar"]="install_cpolar"
-    ["安装盒子助手docker版"]="install_wukongdaily_box"
-    ["安装CasaOS面板"]="install_casaos"
     ["更新脚本"]="update_scripts"
 )
 
@@ -404,34 +400,6 @@ install_cpolar() {
     else
         red "错误：cpolar 命令未找到，请先安装 cpolar。"
     fi
-}
-
-# 安装盒子助手docker版
-install_wukongdaily_box() {
-    sudo mkdir -p /mnt/tvhelper_data
-    sudo chmod 777 /mnt/tvhelper_data
-    docker run -d \
-        --restart unless-stopped \
-        --name tvhelper \
-        -p 2299:22 \
-        -p 2288:80 \
-        -v "/mnt/tvhelper_data:/tvhelper/shells/data" \
-        -e PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/android-sdk/platform-tools \
-        wukongdaily/box:latest
-    if ! docker ps | grep -q "wukongdaily/box"; then
-        echo "Error: 盒子助手docker版 未运行成功"
-    else
-        local host_ip
-        host_ip=$(hostname -I | awk '{print $1}')
-        green "盒子助手docker版已启动，可以通过 http://${host_ip}:2288 验证是否安装成功"
-        green "还可以通过 ssh ${host_ip} -p 2299 连接到容器内 执行 ./tv.sh 使用该工具"
-        green "文档和教学视频：https://www.youtube.com/watch?v=xAk-3TxeXxQ \n  https://www.bilibili.com/video/BV1Rm411o78P"
-    fi
-}
-
-# 安装CasaOS
-install_casaos(){
-    curl -fsSL https://get.casaos.io | sudo bash
 }
 
 # 更新自己
